@@ -1,6 +1,7 @@
 import hashlib
 import os
 
+#NOT A CONSTANT BUT MORE OF AN ENVIROMENT VARIABLE
 GIT_DIR = '.jit'
 
 def init():
@@ -21,7 +22,7 @@ def get_object(oid, expected='blob'):
     type_, _, content = obj.partition(b'\x00')
     type_ = type_.decode()
 
-    if expected is not None and type_ != expected:
+    if expected != "" and type_ != expected:
         raise ValueError(f'Expected {expected}, got {type_}')
 
     return content
